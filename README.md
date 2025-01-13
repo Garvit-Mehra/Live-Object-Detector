@@ -6,9 +6,9 @@ This project uses the YOLO (You Only Look Once) object detection model to identi
 
 ## Key Components:
 	1. YOLO Model Files:
-     Configuration File (.cfg): This file contains the architecture of the YOLO model, specifying how the model should process the input image. It defines the layers and parameters used during detection.
-      Weights File (.weights): This file holds the trained model parameters (the “learned” knowledge) from a pre-trained YOLO model. It allows the system to recognize objects based on features identified during training.
-    Class Names File (.names): A text file containing a list of class labels (e.g., “person”, “car”, “dog”). These are the objects that the model can detect.
+		Configuration File (.cfg): This file contains the architecture of the YOLO model, specifying how the model should process the input image. It defines the layers and parameters used during detection.
+		Weights File (.weights): This file holds the trained model parameters (the “learned” knowledge) from a pre-trained YOLO model. It allows the system to recognize objects based on features identified during training.
+		Class Names File (.names): A text file containing a list of class labels (e.g., “person”, “car”, “dog”). These are the objects that the model can detect.
 	2. OpenCV Library: OpenCV is used to handle image processing tasks such as reading images, drawing bounding boxes, and displaying results. It also provides the functionality to run the YOLO model for detecting objects.
 
 ## How It Works:
