@@ -1,47 +1,72 @@
-# Live-Object-Detector
+# YOLO Object Detection with Video/Camera Input
 
-## Detailed Explanation
+This project uses the YOLO (You Only Look Once) object detection model to detect objects in real-time from a webcam, image, or video file. The object detection is done using OpenCV and YOLOv3, and it displays the bounding boxes with class labels, each with a unique color.
 
-This project uses the YOLO (You Only Look Once) object detection model to identify and label various objects in real-time video or images. YOLO is a state-of-the-art, fast object detection system capable of detecting multiple objects in a single pass through an image. It works by dividing an image into a grid and predicting bounding boxes, class labels, and confidence scores for each object in the grid.
+## Features:
+- Detects objects in images, videos, or webcam feed.
+- Uses YOLOv3 for real-time object detection.
+- Bounding boxes are drawn around detected objects with unique colors for each class.
+- Each class label is displayed with a background color (confidence value hidden).
+- Supports both image and video input.
 
-## Key Components:
-	1. YOLO Model Files:
-		Configuration File (.cfg): This file contains the architecture of the YOLO model, specifying how the model should process the input image. It defines the layers and parameters used during detection.
-		Weights File (.weights): This file holds the trained model parameters (the “learned” knowledge) from a pre-trained YOLO model. It allows the system to recognize objects based on features identified during training.
-		Class Names File (.names): A text file containing a list of class labels (e.g., “person”, “car”, “dog”). These are the objects that the model can detect.
-	2. OpenCV Library: OpenCV is used to handle image processing tasks such as reading images, drawing bounding boxes, and displaying results. It also provides the functionality to run the YOLO model for detecting objects.
+## Requirements:
+- Python 3.x
+- OpenCV
+- Numpy
 
-## How It Works:
-	1. Loading the YOLO Model: The program starts by loading the YOLO model files into memory using OpenCV’s cv2.dnn.readNet() function. It then sets the model’s backend and target to use the best available hardware (such as OpenCL for GPU acceleration if available).
-	2. Preprocessing the Image: The input image (either from a webcam feed or an uploaded image) is preprocessed before being fed into the YOLO model. This involves converting the image into a format suitable for YOLO’s input, including resizing and normalizing pixel values.
-	3. Object Detection: The model processes the input image, detecting objects in the image. It outputs predictions in the form of bounding boxes, confidence scores, and class probabilities for each detected object. The code then calculates the bounding box coordinates, which indicate where the detected objects are located in the image.
-	4. Filtering Predictions: After the initial detection, the program filters out predictions with low confidence (below a threshold of 0.5). It also applies non-maximum suppression (NMS), which removes overlapping bounding boxes and retains only the most confident ones to avoid multiple detections of the same object.
-	5. Displaying and Saving Results: The bounding boxes are drawn on the image with labels and confidence scores. If running in webcam mode, the result is shown in real-time. If processing an uploaded image, the processed image is resized and saved as a new file with the bounding boxes drawn on it.
+You can install the required dependencies using `pip`:
 
-## User Interaction
+```pip install opencv-python numpy```
 
-At the beginning, the user is prompted to choose between two options:
-	•	Option 1: Use the webcam for real-time object detection. The program will open the webcam, continuously process the video feed, and display detected objects live.
-	•	Option 2: Upload an image file for object detection. The user is asked to provide the image path, and the program processes the image and saves the output with detected objects marked.
+You also need the following files for YOLOv3:
+	• yolov3.cfg (YOLOv3 configuration file)
+	• yolov3.weights (YOLOv3 pre-trained weights)
+	• coco.names (Text file containing class names)
+Make sure to download the necessary files from the model_data folder.
 
-## Why YOLO?
+Setup:
+	1. Download the YOLOv3 model configuration, weights, and class names:
+		• YOLOv3 CFG
+		• YOLOv3 WEIGHTS
+		• COCO.NAMES
+	2. Place these files in the model_data/ directory in the same folder as this script.
+	3. Make sure to have the correct file paths to the model files in the script.
+ 
+How to Use:
+	1. Run Detection on Webcam Feed:
+When you run the script, you’ll be prompted to choose an option. To run the detection on your webcam, select option 1.
+python detect.py
+		• Press q to stop the webcam feed.
+	2. Run Detection on an Image:
+Select option 2 when prompted. Enter the file path of the image when asked. The result will be saved as result.jpg.
+python detect.py
+		• Enter the path to the image file when prompted.
+		• The result will be saved as result.jpg in the working directory.
+	3. Run Detection on a Video:
+Select option 3 when prompted. Enter the file path of the video when asked. The result will be saved as output_video.mp4.
+python detect.py
+		•Enter the path to the video file when prompted.
+		•The result will be saved as output_video.mp4 in the working directory.
+	4. Input and Output:
+		•Input: You can either choose to use your webcam, upload an image, or upload a video.
+		•Output: The detected objects will be marked with bounding boxes and labels. The processed video or image will be saved with bounding boxes and labels applied.
+  
+How it Works:
+		•The script uses YOLOv3, which is a deep learning-based object detection algorithm, to detect objects in the input image or video.
+		•The script applies the following steps:
+	1. Load the YOLOv3 model and its configuration files.
+	2. Preprocess the input data (image/video frame).
+	3. Perform forward pass through the YOLOv3 model to get detections.
+	4. Post-process the detections, including non-maxima suppression to remove overlapping boxes.
+	5. Draw bounding boxes around detected objects with unique colors for each class.
+	6. Display the processed frame/image or save the result to an output file.
+ 
+Color Coding:
+	• Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color.
+Label Background:
+	• The class label will appear inside a background rectangle, making it easier to read.
+  
+Troubleshooting:
+	• If the video or image file is not found, make sure the file path is correct.
+	• Ensure you have the necessary YOLO model files (yolov3.cfg, yolov3.weights, coco.names) in the correct location.
 
-YOLO is a powerful object detection model because it performs detection in a single pass through the image (hence “You Only Look Once”), making it highly efficient and suitable for real-time applications. It is fast and accurate, detecting multiple objects in a single image while maintaining high performance.
-
-## Applications
-
-This code can be used for a variety of real-world applications, including:
-	•	Security and Surveillance: Detecting people, vehicles, and other objects in video feeds.
-	•	Autonomous Vehicles: Identifying road signs, pedestrians, and other vehicles in real-time.
-	•	Object Tracking: In applications where tracking specific objects in a video stream is required, such as sports or wildlife monitoring.
-
-## Requirements
-
-To run this project, you need to have:
-	•	Python installed on your machine.
-	•	OpenCV library, which can be installed via pip install opencv-python.
-	•	YOLO pre-trained model files (configuration, weights, and class names), which can be downloaded from popular repositories or official sources.
-
-## Conclusion
-
-This project demonstrates how to perform efficient, real-time object detection using YOLO and OpenCV. By leveraging the pre-trained YOLO model, you can easily detect and label objects in both live video and images with minimal setup. This implementation showcases the power of AI and computer vision for real-world applications in various domains.
