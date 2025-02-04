@@ -24,13 +24,13 @@ You also need the following files for YOLOv3:
 	• coco.names (Text file containing class names)
 Make sure to download the necessary files from the model_data folder.
 
-Setup:
-	1. Download the YOLOv3 model configuration, weights, and class names:
-		• YOLOv3 CFG
-		• YOLOv3 WEIGHTS
-		• COCO.NAMES
-	2. Place these files in the model_data/ directory in the same folder as this script.
-	3. Make sure to have the correct file paths to the model files in the script.
+## Setup:
+1. Download the YOLOv3 model configuration, weights, and class names:
+	- YOLOv3 CFG
+	- YOLOv3 WEIGHTS
+	- COCO.NAMES
+2. Place these files in the model_data/ directory in the same folder as this script.
+3. Make sure to have the correct file paths to the model files in the script.
  
 How to Use:
 	1. Run Detection on Webcam Feed:
