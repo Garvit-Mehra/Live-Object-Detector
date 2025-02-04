@@ -49,7 +49,7 @@ python detect.py
 	- The result will be saved as output_video.mp4 in the working directory.
 4. Input and Output:
 	- Input: You can either choose to use your webcam, upload an image, or upload a video.
-	- Output: The detected objects will be marked with bounding boxes and labels. The processed video or image will be saved with bounding boxes and labels applied.
+	- Output: The detected objects will be marked with bounding boxes and labels. The processed video or image will be saved with bounding boxes and labels applied. (Note: While using video output the output_video file will only save till the point where the rendering is stopped)
   
 ## How it Works:
 - The script uses YOLOv3, which is a deep learning-based object detection algorithm, to detect objects in the input image or video.
