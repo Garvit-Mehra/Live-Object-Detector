@@ -3,9 +3,9 @@ import numpy as np
 import os
 
 # Load YOLO model
-config_path = "model_data/yolov3.cfg"  # Path to your .cfg file
-weights_path = "model_data/yolov3.weights"  # Path to your .weights file
-classes_path = "model_data/coco.names"  # Path to your .names file
+config_path = "model_data/yolov3.cfg"
+weights_path = "model_data/yolov3.weights"
+classes_path = "model_data/coco.names"
 
 # Load class names
 with open(classes_path, "r") as f:
@@ -71,8 +71,8 @@ def detect_objects(frame):
     return frame
 
 
-# Ask user whether to use webcam or upload an image
-choice = input("Choose '1' to run detection on webcam or '2' to upload an image: ")
+# Ask user whether to upload a video
+choice = input("Choose '1' to run detection on webcam, '2' to upload an image, or '3' to upload a video: ")
 
 if choice == '1':
     # Open webcam feed
@@ -115,5 +115,49 @@ elif choice == '2':
         cv2.imwrite("result.jpg", result_image_resized)
         print("Detection completed. The result has been saved as result.jpg.")
 
+elif choice == '3':
+    # Get the video file path
+    video_path = input("Enter the video file path: ")
+    expanded_path = os.path.expanduser(video_path)
+
+    # Open video file
+    cap = cv2.VideoCapture(expanded_path)
+
+    if not cap.isOpened():
+        print("Error: Video not found or unable to open.")
+    else:
+        # Get video information (width, height, frames per second)
+        frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        fps = int(cap.get(cv2.CAP_PROP_FPS))
+
+        # Define the codec and create VideoWriter object
+        out = cv2.VideoWriter("output_video.mp4", cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_width, frame_height))
+
+        frame_count = 0
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            # Perform detection
+            result_frame = detect_objects(frame)
+
+            # Write the frame to the output video
+            out.write(result_frame)
+
+            # Display the frame
+            cv2.imshow("YOLO Detection", result_frame)
+
+            frame_count += 1
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
+
+        # Release everything when done
+        cap.release()
+        out.release()
+        cv2.destroyAllWindows()
+        print("Detection completed. The result has been saved as output_video.mp4.")
+
 else:
-    print("Invalid choice. Please select '1' or '2'.")
+    print("Invalid choice. Please select '1', '2', or '3'.")
