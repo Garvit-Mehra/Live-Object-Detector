@@ -64,9 +64,9 @@ python detect.py
 ## Color Coding:
 - Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color.
 Label Background:
-	• The class label will appear inside a background rectangle, making it easier to read.
+- The class label will appear inside a background rectangle, making it easier to read.
   
-Troubleshooting:
-	• If the video or image file is not found, make sure the file path is correct.
-	• Ensure you have the necessary YOLO model files (yolov3.cfg, yolov3.weights, coco.names) in the correct location.
+## Troubleshooting:
+- If the video or image file is not found, make sure the file path is correct.
+- Ensure you have the necessary YOLO model files (yolov3.cfg, yolov3.weights, coco.names) in the correct location.
 
