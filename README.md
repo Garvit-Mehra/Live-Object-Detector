@@ -1,6 +1,6 @@
 # YOLO Object Detection with Video/Camera Input
 
-This project uses the YOLO (You Only Look Once) object detection model to detect objects in real-time from a webcam, image, or video file. The object detection is done using OpenCV and YOLOv3, and it displays the bounding boxes with class labels, each with a unique color.
+This project uses the YOLO (You Only Look Once) object detection model to detect objects in real-time from a webcam, image, or video file. The object detection is done using OpenCV and YOLOv3, and it displays the bounding boxes with class labels.
 
 ## Features:
 - Detects objects in images, videos, or webcam feed.
