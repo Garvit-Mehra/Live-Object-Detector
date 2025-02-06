@@ -25,26 +25,23 @@ You also need the following files for YOLOv3:
 Make sure to download the necessary files from the model_data folder.
 
 ## Setup:
-1. Download the YOLOv3 model configuration, weights, and class names:
-	- YOLOv3 CFG
-	- YOLOv3 WEIGHTS
-	- COCO.NAMES
-2. Place these files in the model_data/ directory in the same folder as this script.
-3. Make sure to have the correct file paths to the model files in the script.
+1. Download the model_data folder to get YOLOv3 model configuration, weights, and class names:
+	- ```yolov3.cfg```
+	- ```yolov3.weights```
+	- ```coco.names```
+2. Download ```main.py```, ```utils.py```, ```config.py``` and detection.py
+3. Run ```main.py``` to use detection model
  
 ## How to Use:
 1. Run Detection on Webcam Feed:
 When you run the script, you’ll be prompted to choose an option. To run the detection on your webcam, select option 1.
-python detect.py
  	- Press q to stop the webcam feed.
 2. Run Detection on an Image:
-Select option 2 when prompted. Enter the file path of the image when asked. The result will be saved as result.jpg.
-python detect.py
+Select option 2 when prompted. Enter the file path of the image when asked. The result will be saved as ```result.jpg```.
    	- Enter the path to the image file when prompted.
 	- The result will be saved as result.jpg in the working directory.
 3. Run Detection on a Video:
-Select option 3 when prompted. Enter the file path of the video when asked. The result will be saved as output_video.mp4.
-python detect.py
+Select option 3 when prompted. Enter the file path of the video when asked. The result will be saved as ```output_video.mp4```.
 	- Enter the path to the video file when prompted.
 	- The result will be saved as output_video.mp4 in the working directory.
 4. Input and Output:
@@ -62,11 +59,10 @@ python detect.py
 	6. Display the processed frame/image or save the result to an output file.
  
 ## Color Coding:
-- Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color.
+- Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color. (These colors can be set manually in ```utils.py```)
 Label Background:
 - The class label will appear inside a background rectangle, making it easier to read.
   
 ## Troubleshooting:
 - If the video or image file is not found, make sure the file path is correct.
-- Ensure you have the necessary YOLO model files (yolov3.cfg, yolov3.weights, coco.names) in the correct location.
-
+- Ensure you have the necessary YOLO model files (```yolov3.cfg```, ```yolov3.weights```, ```coco.names```) in the correct location.
