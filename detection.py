@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from config import CONFIG_PATH, WEIGHTS_PATH, CLASSES_PATH, CONFIDENCE_THRESHOLD, NMS_THRESHOLD
-from utils import get_text_color
+from utils import generate_color, get_text_color  # Import the updated generate_color function
 
 # Load YOLO model
 with open(CLASSES_PATH, "r") as f:
@@ -10,12 +10,6 @@ with open(CLASSES_PATH, "r") as f:
 net = cv2.dnn.readNet(WEIGHTS_PATH, CONFIG_PATH)
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_OPENCL)
-
-class_colors = {
-    "person": (255, 0, 0),
-    "car": (0, 255, 255),
-    "dog": (255, 0, 0)
-}
 
 
 def detect_objects(frame):
@@ -59,7 +53,9 @@ def detect_objects(frame):
             x, y, w, h = boxes[i]
             class_name = classes[class_ids[i]]
             label = f"{class_name}"
-            color = class_colors.get(class_name, (255, 255, 255))
+
+            # Use the updated generate_color function
+            color = generate_color(class_ids[i])  # Get the color for this class ID
 
             overlay = frame.copy()
             cv2.rectangle(overlay, (x, y), (x + w, y + h), color, -1)
