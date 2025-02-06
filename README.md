@@ -29,8 +29,8 @@ Make sure to download the necessary files from the model_data folder.
 	- ```yolov3.cfg```
 	- ```yolov3.weights```
 	- ```coco.names```
-2. Download ```main.py```, ```utils.py```, ```config.py``` and detection.py
-3. Run ```main.py``` to use detection model
+2. Download ```detector.py```
+3. Run ```detector.py``` to use detection model
  
 ## How to Use:
 1. Run Detection on Webcam Feed:
@@ -59,9 +59,9 @@ Select option 3 when prompted. Enter the file path of the video when asked. The 
 	6. Display the processed frame/image or save the result to an output file.
  
 ## Color Coding:
-- Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color. (These colors can be set manually in ```utils.py```)
-Label Background:
-- The class label will appear inside a background rectangle, making it easier to read.
+- Each detected class (e.g., “person”, “car”, “dog”) will have a unique color assigned to its bounding box and label. The color is deterministic for each class, meaning the same class will always have the same color. (These colors can be set manually in ```class_colors``` dictionary)
+- Label Background:
+	- The class label will appear inside a background rectangle, making it easier to read.
   
 ## Troubleshooting:
 - If the video or image file is not found, make sure the file path is correct.
