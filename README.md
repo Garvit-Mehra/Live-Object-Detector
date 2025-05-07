@@ -16,7 +16,9 @@ This project uses the YOLO (You Only Look Once) object detection model to detect
 
 You can install the required dependencies using `pip`:
 
-```pip install opencv-python numpy```
+```bash
+pip install opencv-python numpy
+```
 
 You also need the following files for YOLOv3:
 	• yolov3.cfg (YOLOv3 configuration file)
