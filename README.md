@@ -20,19 +20,9 @@ You can install the required dependencies using `pip`:
 pip install opencv-python numpy
 ```
 
-You also need the following files for YOLOv3:
-	• yolov3.cfg (YOLOv3 configuration file)
-	• yolov3.weights (YOLOv3 pre-trained weights)
-	• coco.names (Text file containing class names)
-Make sure to download the necessary files from the model_data folder.
-
 ## Setup:
-1. Download the model_data folder to get YOLOv3 model configuration, weights, and class names:
-	- ```yolov3.cfg```
-	- ```yolov3.weights```
-	- ```coco.names```
-2. Download ```detector.py```
-3. Run ```detector.py``` to use detection model
+1. Run ```detector.py``` to use detection model
+2. Select number to choose running mode
  
 ## How to Use:
 1. Run Detection on Webcam Feed:
